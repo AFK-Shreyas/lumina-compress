@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta
+      name="description"
+      content="Free image compressor online — compress image online, reduce image size, and use our JPG compressor, PNG compressor, and photo compressor in your browser. No upload, no backend."
+    />
+    <meta
+      name="keywords"
+      content="image compressor, compress image online, reduce image size, jpg compressor, png compressor, photo compressor, webp, lumina compress"
+    />
+    <meta name="author" content="Lumina Compress" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Lumina Compress" />
+    <meta property="og:title" content="Lumina Compress — Free image compressor online" />
+    <meta
+      property="og:description"
+      content="Compress image online and reduce image size for JPG, PNG, and WebP. Client-side image compressor with ZIP download — fast, private, mobile-friendly."
+    />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Lumina Compress — Free image compressor online" />
+    <meta
+      name="twitter:description"
+      content="Free image compressor: jpg compressor, png compressor, and photo compressor in your browser. Reduce image size without uploading files."
+    />
+    <title>Lumina Compress — Free image compressor online (JPG, PNG, WebP)</title>
+    <script>
+      ;(function () {
+        var key = 'lumina-theme'
+        try {
+          var stored = localStorage.getItem(key)
+          if (
+            stored === 'dark' ||
+            (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)
+          ) {
+            document.documentElement.classList.add('dark')
+          }
+        } catch (_) {}
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
