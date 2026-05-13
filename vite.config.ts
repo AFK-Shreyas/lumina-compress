@@ -4,7 +4,6 @@ import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import type { Plugin, ResolvedConfig } from 'vite'
 import { defineConfig } from 'vite'
-
 function seoStaticPlugin(): Plugin {
   let resolved: ResolvedConfig
   return {
@@ -14,12 +13,12 @@ function seoStaticPlugin(): Plugin {
     },
     closeBundle() {
       const outDir = path.resolve(resolved.root, resolved.build.outDir)
-      const site = (process.env.VITE_SITE_URL || 'https://www.example.com').replace(/\/$/, '')
+      const site = (process.env.VITE_SITE_URL || 'https://luminacompress.netlify.app').replace(/\/$/, '')
       const base = resolved.base || '/'
       const baseSeg = base === '/' ? '' : base.replace(/\/$/, '')
       const root = `${site}${baseSeg}`.replace(/\/+$/, '')
       const loc = (route: string) => (route === '/' ? `${root}/` : `${root}${route}`)
-      const routes = ['/', '/about', '/privacy', '/terms', '/contact']
+      const routes = ['/', '/about', '/privacy', '/terms', '/compress-image', '/resize-image', '/crop-image', '/passport-photo-maker', '/instagram-image-resizer', '/youtube-thumbnail-resizer', '/compress-image-to-20kb', '/compress-image-to-50kb', '/compress-image-to-100kb', '/compress-image-to-200kb']
       const urlEntries = routes
         .map(
           (r) => `  <url>
@@ -37,17 +36,14 @@ ${urlEntries}
       const sitemapUrl = `${root}/sitemap.xml`.replace(/([^:])\/{2,}/g, '$1/')
       const robots = `User-agent: *
 Allow: /
-
 Sitemap: ${sitemapUrl}
 `
-
       fs.mkdirSync(outDir, { recursive: true })
       fs.writeFileSync(path.join(outDir, 'sitemap.xml'), sitemap, 'utf8')
       fs.writeFileSync(path.join(outDir, 'robots.txt'), robots, 'utf8')
     },
   }
 }
-
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [tailwindcss(), react(), seoStaticPlugin()],
